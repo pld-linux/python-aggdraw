@@ -23,6 +23,7 @@ URL:		http://effbot.org/zone/aggdraw-index.htm
 BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
+Suggests:	python-PIL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -49,7 +50,6 @@ python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-#install -d $RPM_BUILD_ROOT
 
 %{__python} ./setup.py install \
 	--optimize=2 \
