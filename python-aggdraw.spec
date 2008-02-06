@@ -6,7 +6,8 @@
 %define		package		aggdraw
 %define		buildver	20051010
 #
-%bcond_without	freetype2	# Build without freetype support
+# Conditional build:
+%bcond_without	freetype	# Build without freetype support
 #
 Summary:	An add-on to the PIL library that supports anti-aliased drawing
 Summary(pl.UTF-8):	Dodatek do biblioteki PIL z obsługą rysowania z wygładzaniem
@@ -17,9 +18,9 @@ License:	Python (MIT style)
 Group:		Libraries/Python
 Source0:	http://effbot.org/media/downloads/%{package}-%{version}-%{buildver}.zip
 # Source0-md5:	9dd2dc67f079592d87970aed0bc5d519
-%{?with_freetype2:Patch0:	%{name}-freetype-enable.patch}
+Patch0:		%{name}-freetype-enable.patch
 URL:		http://effbot.org/zone/aggdraw-index.htm
-%{?with_freetype2:BuildRequires:	freetype-devel}
+%{?with_freetype:BuildRequires:	freetype-devel >= 2.0}
 BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
@@ -41,12 +42,12 @@ WCK.
 
 %prep
 %setup -q -n %{package}-%{version}-%{buildver}
-%if %{with freetype2}
+%if %{with freetype}
 %patch0 -p1
 %endif
 
 %build
-python setup.py build
+%{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
