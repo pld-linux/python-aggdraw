@@ -23,6 +23,7 @@ URL:		http://effbot.org/zone/aggdraw-index.htm
 %{?with_freetype:BuildRequires:	freetype-devel >= 2.0}
 BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	rpm-pythonprov
+BuildRequires:	unzip
 %pyrequires_eq	python-modules
 Suggests:	python-PIL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
