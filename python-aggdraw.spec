@@ -3,12 +3,12 @@
 #       source tree and the module itself isn't dynamically linked with
 #       AGG, so there's no need for 'BR: agg-devel' and 'R: agg'. This
 #       however may change in the future versions of aggdraw.
-%define		package		aggdraw
-%define		buildver	20051010
 #
 # Conditional build:
 %bcond_without	freetype	# Build without freetype support
 #
+%define		package		aggdraw
+%define		buildver	20051010
 Summary:	An add-on to the PIL library that supports anti-aliased drawing
 Summary(pl.UTF-8):	Dodatek do biblioteki PIL z obsługą rysowania z wygładzaniem
 Name:		python-aggdraw
